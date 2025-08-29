@@ -43,7 +43,7 @@ export default function Home() {
 
   const ref = useRef()
 
-  const eventDate = new Date('2025-09-8T17:00:00')
+  const eventDate = new Date('2025-09-08T17:00:00')
   console.log(Date.parse(new Date()))
   function getTimeRemaining(endTime) {
     const total = Date.parse(endTime) - Date.parse(new Date())
