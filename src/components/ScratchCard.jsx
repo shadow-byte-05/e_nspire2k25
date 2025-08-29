@@ -12,21 +12,20 @@ const WobbleScratchCard = ({
   const isDrawingRef = useRef(false)
   const [isComplete, setIsComplete] = useState(false)
   const overlayDrawnRef = useRef(false)
+  const lastPosRef = useRef({ x: 0, y: 0 })
 
   useEffect(() => {
     const canvas = canvasRef.current
     if (!canvas) return
-
     const ctx = canvas.getContext('2d')
 
+
     if (!overlayDrawnRef.current) {
-      // Draw a solid color as a placeholder immediately
       ctx.globalCompositeOperation = 'source-over'
-      ctx.fillStyle = '#e5e7eb' // Tailwind gray-200
+      ctx.fillStyle = '#e5e7eb' 
       ctx.fillRect(0, 0, width, height)
 
-      // Then load and draw the overlay image
-      const overlayImg = new window.Image()
+      const overlayImg = new Image()
       overlayImg.src = coverImage
       overlayImg.onload = () => {
         ctx.globalCompositeOperation = 'source-over'
@@ -41,7 +40,6 @@ const WobbleScratchCard = ({
       for (let i = 0; i < imageData.data.length; i += 4) {
         if (imageData.data[i + 3] === 0) cleared++
       }
-      console.log((cleared / (width * height)) * 100)
       return (cleared / (width * height)) * 100
     }
 
@@ -52,14 +50,27 @@ const WobbleScratchCard = ({
       const y = (e.touches ? e.touches[0].clientY : e.clientY) - rect.top
 
       ctx.globalCompositeOperation = 'destination-out'
+      ctx.lineWidth = 40 // diameter of the scratch brush
+      ctx.lineCap = 'round'
+      ctx.lineJoin = 'round'
+
       ctx.beginPath()
-      ctx.arc(x, y, 20, 0, Math.PI * 2)
-      ctx.fill()
+      ctx.moveTo(lastPosRef.current.x, lastPosRef.current.y)
+      ctx.lineTo(x, y)
+      ctx.stroke()
+
+      lastPosRef.current = { x, y }
     }
 
     const startDrawing = (e) => {
       if (isComplete) return
       isDrawingRef.current = true
+
+      const rect = canvas.getBoundingClientRect()
+      const x = (e.touches ? e.touches[0].clientX : e.clientX) - rect.left
+      const y = (e.touches ? e.touches[0].clientY : e.clientY) - rect.top
+      lastPosRef.current = { x, y }
+
       scratch(e)
     }
 
@@ -75,19 +86,23 @@ const WobbleScratchCard = ({
     canvas.addEventListener('mousedown', startDrawing)
     canvas.addEventListener('mousemove', scratch)
     canvas.addEventListener('mouseup', endDrawing)
+    canvas.addEventListener('mouseleave', endDrawing)
     canvas.addEventListener('touchstart', startDrawing)
     canvas.addEventListener('touchmove', scratch)
     canvas.addEventListener('touchend', endDrawing)
+    canvas.addEventListener('touchcancel', endDrawing)
 
     return () => {
       canvas.removeEventListener('mousedown', startDrawing)
       canvas.removeEventListener('mousemove', scratch)
       canvas.removeEventListener('mouseup', endDrawing)
+      canvas.removeEventListener('mouseleave', endDrawing)
       canvas.removeEventListener('touchstart', startDrawing)
       canvas.removeEventListener('touchmove', scratch)
       canvas.removeEventListener('touchend', endDrawing)
+      canvas.removeEventListener('touchcancel', endDrawing)
     }
-  }, [width, height, coverImage, isComplete])
+  }, [width, height, coverImage, isComplete, onComplete])
 
   return (
     <motion.div
@@ -101,7 +116,7 @@ const WobbleScratchCard = ({
         repeat: Infinity,
         repeatType: 'reverse',
       }}
-      className="relative rounded-xl  overflow-hidden shadow-[3px_20px_35px_12px_#4a5568]"
+      className="relative rounded-xl overflow-hidden shadow-[3px_20px_35px_12px_#4a5568]"
       style={{ width, height }}
     >
       {/* Content behind the scratch card */}
@@ -115,10 +130,9 @@ const WobbleScratchCard = ({
           <motion.canvas
             exit={{
               opacity: 0,
-              scale: -2,
+              scale: 0,
               transition: { duration: 0.3 },
             }}
-            t
             ref={canvasRef}
             width={width}
             height={height}

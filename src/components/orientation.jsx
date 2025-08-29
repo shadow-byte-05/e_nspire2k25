@@ -76,6 +76,27 @@ export default function Home() {
     return () => clearInterval(ref.current)
   }, [])
 
+  useEffect(() => {
+    if (showScratchCard) {
+      // Lock scroll
+      document.body.style.overflow = 'hidden'
+      document.body.style.position = 'fixed' // optional for mobile
+      document.body.style.width = '100%' // prevents layout shift
+    } else {
+      // Unlock scroll
+      document.body.style.overflow = 'auto'
+      document.body.style.position = ''
+      document.body.style.width = ''
+    }
+
+    // Cleanup on unmount
+    return () => {
+      document.body.style.overflow = 'auto'
+      document.body.style.position = ''
+      document.body.style.width = ''
+    }
+  }, [showScratchCard])
+
   const handleScroll = (event) => {
     const container = event.target
     const scrollAmount = event.deltaY
