@@ -271,7 +271,7 @@ export default function Home() {
           </AnimatePresence>
         </div>
         <p className="text-gray-300 text-sm md:text-base mt-2">
-          SEPTEMBER 8 @ VSSUT
+          SEPTEMBER 8 @ Sir Visveswaraya Auditorium
         </p>
 
         <div className="social-iicons mt-4 gap-3 flex justify-center items-center text-white">
