@@ -120,7 +120,7 @@ export default function Home() {
             transition={{ duration: 0.6 }}
           >
             {/* Background Light Rays */}
-            <LightRays
+            {/* <LightRays
               raysOrigin="top-center"
               raysColor="#00ffff"
               raysSpeed={1.5}
@@ -132,7 +132,7 @@ export default function Home() {
               noiseAmount={0}
               distortion={0}
               className="custom-rays"
-            />
+            /> */}
             {/* Centered Scratch Card */}
             <div className="absolute flex items-center justify-center">
               {/* Text behind the scratch card */}
@@ -193,22 +193,22 @@ export default function Home() {
             <p className="text-sm text-gray-300">presents</p>
           </div>
           <div className="flex flex-col justify-evenly text-white">
-            <h1 className="text-7xl sm:text-6xl md:text-8xl font-bold font-bg bg-gradient-to-r from-violet-600 to-purple-400 bg-clip-text text-transparent">
+            <h1 className="text-7xl sm:text-6xl md:text-8xl font-bold font-bg bg-gradient-to-r from-violet-900 via-violet-800 to-violet-900 bg-clip-text text-transparent">
               E-NSPIRE
             </h1>
             {startupId && startupList[startupId] && (
               <motion.div
                 className="flex justify-center items-center my-10"
                 animate={{
-                  x: [0, 10, -10, 5, 0], 
-                  y: [0, -10, 10, -5, 0], 
-                  rotate: [0, 2, -2, 1, 0], 
+                  x: [0, 10, -10, 5, 0],
+                  y: [0, -10, 10, -5, 0],
+                  rotate: [0, 2, -2, 1, 0],
                 }}
                 transition={{
-                  duration: 6, 
+                  duration: 6,
                   repeat: Infinity,
                   repeatType: 'loop',
-                  ease: 'easeInOut', 
+                  ease: 'easeInOut',
                 }}
               >
                 <motion.div
@@ -266,20 +266,12 @@ export default function Home() {
                     ))}
                   </NumberFlowGroup>
                 </div>
-                {/* Register Button */}
-                {/* <Button
-                      onClick={() => {}}
-                      className="w-full max-w-xs bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold py-2 sm:py-3 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl text-sm sm:text-base"
-                    >
-                      Register Now
-                    </Button>
-                    */}
               </motion.div>
             )}
           </AnimatePresence>
         </div>
         <p className="text-gray-300 text-sm md:text-base mt-2">
-          SEPTEMBER 8 @ E-LEARNING CENTER
+          SEPTEMBER 8 @ VSSUT
         </p>
 
         <div className="social-iicons mt-4 gap-3 flex justify-center items-center text-white">

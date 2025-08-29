@@ -77,7 +77,7 @@ const WobbleScratchCard = ({
     const endDrawing = () => {
       if (isComplete) return
       isDrawingRef.current = false
-      if (getPercent() > 60) {
+      if (getPercent() > 40) {
         setIsComplete(true)
         onComplete?.()
       }
