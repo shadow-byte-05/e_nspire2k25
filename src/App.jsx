@@ -64,7 +64,7 @@ function App() {
                   <text
                     x="50%"
                     y="50%"
-                    fontSize="15vw"
+                    fontSize="min(15vw, 60px)"
                     textAnchor="middle"
                     fill="black"
                     dominantBaseline="middle"
