@@ -120,7 +120,7 @@ export default function Home() {
             transition={{ duration: 0.6 }}
           >
             {/* Background Light Rays */}
-            {/* <LightRays
+            <LightRays
               raysOrigin="top-center"
               raysColor="#00ffff"
               raysSpeed={1.5}
@@ -132,7 +132,7 @@ export default function Home() {
               noiseAmount={0}
               distortion={0}
               className="custom-rays"
-            /> */}
+            />
             {/* Centered Scratch Card */}
             <div className="absolute flex items-center justify-center">
               {/* Text behind the scratch card */}
