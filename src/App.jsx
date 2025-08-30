@@ -65,7 +65,7 @@ function App() {
                     x="50%"
                     y="50%"
                     fontSize="min(20vw, 80px)"
-                    fontWeight={20}
+                    fontWeight="900" 
                     textAnchor="middle"
                     fill="black"
                     dominantBaseline="middle"
