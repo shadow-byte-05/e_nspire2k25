@@ -3,7 +3,7 @@ import { FiZap } from 'react-icons/fi'
 import { GiLightBulb } from 'react-icons/gi'
 
 export const StartupCard = ({ startupName, role, className = '' }) => {
-  console.log(startupName, role)
+  // console.log(startupName, role)
   return (
     <div
       className={`relative w-[300px] h-[450px] rounded-2xl bg-gradient-to-br from-violet-600 to-violet-500 shadow-[0_10px_30px_-10px_rgba(262,83%,58%,0.3)] hover:shadow-[0_20px_40px_-10px_rgba(262,83%,58%,0.4)] transition-all duration-300 overflow-hidden ${className}`}
@@ -26,7 +26,7 @@ export const StartupCard = ({ startupName, role, className = '' }) => {
       <div className="relative z-10 flex flex-col items-center justify-center h-full p-8 text-center">
         {/* Top Icon */}
         <div className="mb-8 relative">
-          <div className="flex items-center justify-center space-x-2 opacity-80">
+          <div className="flex items-center justify-center  space-x-2 opacity-80">
             <BiRocket className="w-6 h-6 text-[hsl(0,0%,100%)] " />
             <GiLightBulb className="w-5 h-5 text-[hsl(31,100%,65%)] " />
             <FiZap className="w-5 h-5 text-[hsl(0,0%,100%)]" />

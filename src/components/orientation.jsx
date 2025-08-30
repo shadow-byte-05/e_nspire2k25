@@ -108,10 +108,10 @@ export default function Home() {
   }
 
   return (
-    <div className="relative w-full overflow-hidden">
+    <div className="relative w-full overflow-hidden pb-[50px]">
       {/* Content Container */}
       <AnimatePresence>
-        {showScratchCard && (
+        {showScratchCard && startupId && role && (
           <motion.div
             className="fixed h-screen inset-0 z-[1000] bg-black/60 backdrop-blur-md flex items-center justify-center "
             initial={{ opacity: 0 }}
@@ -213,7 +213,7 @@ export default function Home() {
               >
                 <motion.div
                   layoutId="card"
-                  className="w-72 sm:w-80 md:w-96  rounded-3xl shadow-lg"
+                  className="w-72 flex items-center justify-center sm:w-80 md:w-96  rounded-3xl shadow-lg"
                 >
                   <StartupCard
                     startupName={startupList[startupId]}
@@ -274,39 +274,39 @@ export default function Home() {
           SEPTEMBER 8 @ Sir Visveswaraya Auditorium
         </p>
 
-        <div className="social-iicons mt-4 gap-3 flex justify-center items-center text-white">
+        <div className="social-iicons mt-6 gap-6 flex justify-center items-center text-white">
           <motion.a
             whileHover={{ y: -5 }}
             href="https://twitter.com/ecellvssut?lang=en"
-            className="twitter flex items-center justify-center "
+            className="twitter text-2xl flex items-center justify-center "
           >
             <FaXTwitter style={{ fontSize: '1em' }} e></FaXTwitter>
           </motion.a>
           <motion.a
             whileHover={{ y: -5 }}
             href="https://www.facebook.com/ecellvssut/"
-            className="facebook flex items-center justify-center"
+            className="facebook text-2xl flex items-center justify-center"
           >
             <BsFacebook style={{ fontSize: '1em' }}></BsFacebook>
           </motion.a>
           <motion.a
             whileHover={{ y: -5 }}
             href="https://www.instagram.com/ecellvssut/?hl=en"
-            className="instagram flex items-center justify-center"
+            className="instagram text-2xl flex items-center justify-center"
           >
             <BsInstagram style={{ fontSize: '1em' }}></BsInstagram>
           </motion.a>
           <motion.a
             whileHover={{ y: -5 }}
             href="https://in.linkedin.com/company/ecellvssut"
-            className="linkedin flex items-center justify-center"
+            className="linkedin text-2xl flex items-center justify-center"
           >
             <AiOutlineLinkedin style={{ fontSize: '1em' }}></AiOutlineLinkedin>
           </motion.a>
         </div>
       </div>
 
-      <div className="relative flex flex-col items-center">
+      {/* <div className="relative flex flex-col items-center">
         <div className="absolute bg-gray-100 w-[150vw] h-[25vh] md:h-[30vh] top-[-20px] left-[-10px] md:left-[-20px] z-[-2] rotate-[-5deg] md:rotate-[-3deg]"></div>
         <h1 className="text-4xl md:text-6xl font-bold text-slate-200 text-center pt-4 md:pt-10">
           E-CELL
@@ -314,7 +314,7 @@ export default function Home() {
         <h1 className="text-2xl font-semibold text-gray-500 text-center italic">
           A Techno-Management Club
         </h1>
-      </div>
+      </div> */}
 
       {/* <div className="relative h-[20vh] mb-[20vh]">
         <div className="absolute bg-violet-500 w-[150vw] h-[45vh] md:h-[50vh] top-[18px] left-[-20px] md:left-[-20px] rotate-[-5deg] md:rotate-[-3deg]"></div>
